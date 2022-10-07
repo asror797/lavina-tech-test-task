@@ -7,7 +7,7 @@ import { Entity , PrimaryGeneratedColumn , Column, CreateDateColumn } from "type
 
 export class Books {
    @PrimaryGeneratedColumn("uuid")
-   id:number
+   id:string
 
    @Column({
       type:"text",
