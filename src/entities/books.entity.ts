@@ -1,4 +1,4 @@
-import { Entity , PrimaryGeneratedColumn , Column, CreateDateColumn } from "typeorm"
+import { Entity , PrimaryGeneratedColumn , Column, CreateDateColumn , UpdateDateColumn } from "typeorm"
 
 
 @Entity({
@@ -23,7 +23,6 @@ export class Books {
    })
    publish_date:string
 
-
    @Column({
       type:"int",
       nullable:false
@@ -43,4 +42,10 @@ export class Books {
       nullable:false
    })
    isbn:string
+
+   @CreateDateColumn()
+   created_at: Date;
+
+   @UpdateDateColumn()
+   updated_at: Date;
 }

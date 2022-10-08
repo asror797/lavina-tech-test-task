@@ -60,7 +60,7 @@ export default {
          } catch (error) {
             console.log(error)
             res.json({
-               message:`Not found this ${isbn}`
+               message:`NotFoundBook`
             })
          }
 
@@ -95,10 +95,11 @@ export default {
       try {
          const { id , status } = req.body
 
+         const STATUS = parseInt(status)
          const { raw } = await dataSource
                         .createQueryBuilder()
                         .update(Books)
-                        .set({status:status})
+                        .set({status:STATUS})
                         .where("id=:id",{id:id})
                         .returning('*')
                         .execute()
