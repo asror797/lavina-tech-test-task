@@ -14,6 +14,27 @@ export default {
          res.sendStatus(500)
       }
    },
+   GET_BY_ID:async(req:Request,res:Response) => {
+      try {
+         const book = await dataSource.getRepository(Books).findOne({
+            where:{
+               id:req.params.id
+            }
+         })
+
+         if(!book) {
+            res.json({
+               message:"Not found this book"
+            })
+         }else {
+            res.json(book)
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.sendStatus(500)
+      }
+   },
    ADD_NEW_BOOK:async(req:Request, res:Response) => {
       try {
          const isbn = req.params.isbn
