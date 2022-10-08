@@ -9,7 +9,7 @@ router
       .get('/books',booksController.GET)
       .get('/add/:isbn',booksController.ADD_NEW_BOOK)
       .put('/update',booksController.CHANGE_STATUS)
-      .delete('/:isbn',booksController.DELETE)
+      .delete('/delete/:isbn',booksController.DELETE)
 
 
 export default router;

@@ -63,7 +63,11 @@ export default {
          res.json(raw[0])
       } catch (error) {
          console.log(error)
-         res.sendStatus(500)
+         res.status(500).json({
+            status:500,
+            message:"InternalServerError"
+         })
+
       }
    },
    CHANGE_STATUS:async(req:Request,res:Response) => {
