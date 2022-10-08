@@ -46,6 +46,12 @@ __decorate([
         nullable: false
     })
 ], Books.prototype, "isbn", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)()
+], Books.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)()
+], Books.prototype, "updated_at", void 0);
 Books = __decorate([
     (0, typeorm_1.Entity)({
         name: "books"

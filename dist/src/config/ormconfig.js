@@ -28,11 +28,11 @@ const typeorm_1 = require("typeorm");
 const path = __importStar(require("path"));
 exports.dataSource = new typeorm_1.DataSource({
     type: 'postgres',
-    host: 'localhost',
+    username: "postgres",
+    host: 'database-asror.c19rfkgwlhv1.us-east-1.rds.amazonaws.com',
     port: 5432,
-    username: 'asror',
     database: 'lavina',
-    password: 'aaa13579#',
+    password: 'asrorbek797',
     synchronize: true,
     entities: [path.join(__dirname, '..', 'entities', '*.entity.{ts,js}')]
 });

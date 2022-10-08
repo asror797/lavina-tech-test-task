@@ -8,7 +8,8 @@ const books_controller_1 = __importDefault(require("../controllers/books.control
 const router = (0, express_1.Router)();
 router
     .get('/books', books_controller_1.default.GET)
+    .get('/book/:id', books_controller_1.default.GET_BY_ID)
     .get('/add/:isbn', books_controller_1.default.ADD_NEW_BOOK)
     .put('/update', books_controller_1.default.CHANGE_STATUS)
-    .delete('/:isbn', books_controller_1.default.DELETE);
+    .delete('/delete/:isbn', books_controller_1.default.DELETE);
 exports.default = router;

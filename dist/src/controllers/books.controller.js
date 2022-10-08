@@ -26,6 +26,27 @@ exports.default = {
             res.sendStatus(500);
         }
     }),
+    GET_BY_ID: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const book = yield ormconfig_1.dataSource.getRepository(books_entity_1.Books).findOne({
+                where: {
+                    id: req.params.id
+                }
+            });
+            if (!book) {
+                res.json({
+                    message: "Not found this book"
+                });
+            }
+            else {
+                res.json(book);
+            }
+        }
+        catch (error) {
+            console.log(error);
+            res.sendStatus(500);
+        }
+    }),
     ADD_NEW_BOOK: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const isbn = req.params.isbn;
@@ -48,7 +69,7 @@ exports.default = {
             catch (error) {
                 console.log(error);
                 res.json({
-                    message: `Not found this ${isbn}`
+                    message: `NotFoundBook`
                 });
             }
         }
@@ -71,16 +92,20 @@ exports.default = {
         }
         catch (error) {
             console.log(error);
-            res.sendStatus(500);
+            res.status(500).json({
+                status: 500,
+                message: "InternalServerError"
+            });
         }
     }),
     CHANGE_STATUS: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { id, status } = req.body;
+            const STATUS = parseInt(status);
             const { raw } = yield ormconfig_1.dataSource
                 .createQueryBuilder()
                 .update(books_entity_1.Books)
-                .set({ status: status })
+                .set({ status: STATUS })
                 .where("id=:id", { id: id })
                 .returning('*')
                 .execute();
